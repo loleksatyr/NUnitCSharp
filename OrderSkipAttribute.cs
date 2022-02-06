@@ -8,39 +8,42 @@ using OpenQA.Selenium.Chrome;
 using NUnitCSharp.BaseClass;
 using System.Threading;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 
 namespace NUnitCSharp
    
 {
     [TestFixture]
-    public class TestClass : BaseTest
-    {
-        [Test, Category("Smoke Testing")]
+    public class OrderSkipAttribute
+    {  
+        [Test, Category("OrderSkipAttribute"),Order(1)]
         public void TestMethod1()
         {
+            Assert.Ignore("Defect 12345");
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "https://www.facebook.com/";
             IWebElement emailTextField = driver.FindElement(By.XPath("//*[@id='email']"));
             emailTextField.SendKeys("Selenium C#");
-            driver.FindElement(By.XPath("/html/body/div[3]/div[2]/div/div/div/div/div[3]/button[2]")).SendKeys(Keys.Enter);
-            driver.FindElement(By.XPath("/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[5]/a")).SendKeys(Keys.Enter);
-            Thread.Sleep(1000);
-            IWebElement monthDropdownList = driver.FindElement(By.Name("birthday_month")); 
-            SelectElement element = new SelectElement(monthDropdownList);
-            element.SelectByIndex(1);
-            element.SelectByText("maj");
-            element.SelectByValue("6");
-
+            driver.Close();
         }
-        [Test, Category("Regression Testing")]
+        [Test, Category("OrderSkipAttribute"),Order(0)]
         public void TestMethod2()
         {
+            IWebDriver driver = new FirefoxDriver();
+            driver.Url = "https://www.facebook.com/";
             IWebElement emailTextField = driver.FindElement(By.XPath("//*[@id='email']"));
             emailTextField.SendKeys("Selenium C#");
+            driver.Close();
         }
-        [Test, Category("Smoke Testing")]
+        [Test, Category("OrderSkipAttribute"),Order(2)]
         public void TestMethod3()
         {
+            IWebDriver driver = new InternetExplorerDriver();
+            driver.Url = "https://www.facebook.com/";
             IWebElement emailTextField = driver.FindElement(By.XPath("//*[@id='email']"));
             emailTextField.SendKeys("Selenium C#");
+            driver.Close();
         }
     }
 }
