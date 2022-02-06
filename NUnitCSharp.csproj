@@ -51,13 +51,16 @@
     <Compile Include="ParellTesting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OrderSkipAttribute.cs" />
+    <Compile Include="SeleniumCSharpTutorial04.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="Utilities\BrowserUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Screenshots\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
