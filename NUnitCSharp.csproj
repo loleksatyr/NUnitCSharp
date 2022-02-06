@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseTest.cs" />
+    <Compile Include="ParellTesting.cs" />
     <Compile Include="TestClass.cs" />
+    <Compile Include="Utilities\BrowserUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

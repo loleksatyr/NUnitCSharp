@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -7,22 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NUnitCSharp.BaseClass
+namespace NUnitCSharp.Utilities
 {
-    public class BaseTest
+    public class BrowserUtility
     {
-        public IWebDriver driver;
-       [SetUp]
-        public void Open() 
+        public IWebDriver Init(IWebDriver driver)
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Url = "https://www.facebook.com/";
+            return driver;
         }
-        [TearDown]
-        public void Close()
-        {
-            driver.Quit();
-        }
+
+
     }
 }
